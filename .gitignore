@@ -50,3 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#Keil
+F071CBTx/MDK-ARM/F071CBTx
