@@ -69,15 +69,14 @@ int fputc(int ch,FILE *f)
     HAL_UART_Transmit(&huart1,temp,1,2);
 		return 0;
 }
-int32_t last_t = 0;
-int32_t t = 0, dt = 0;
+
+int32_t t = 0;
 void HAL_COMP_TriggerCallback(COMP_HandleTypeDef *hcomp)
 {
-		t = TIM2->CNT;
-		dt = t-last_t;
-		last_t = t;
-		printf("time(us)=%d\r\n",dt);
-    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+	t = TIM2->CNT;
+	TIM2->CNT = 0;
+	printf("Line1=%d;\r\n",t);
+	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 }
 /* USER CODE END 0 */
 
